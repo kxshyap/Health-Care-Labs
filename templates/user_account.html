@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load account %}
+
+
+{% block content %}
+
+<br>
+<!-- Messages Start-->
+<div class='container'>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<!-- Messages End-->
+
+<!-- New Test Cards -->
+{% if user %}
+<div class="container d-flex align-items-center flex-wrap">
+    {% if user_tests %}
+    {% for test in user_tests %}
+    <div class="card mx-4 my-2" style="width: 18rem; height: 11rem; display: flex; flex-direction: column;">
+        <div class="card-body">
+            <h6 class="card-title" style="flex-basis: 30%;">{{test.testname}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted" style="flex-basis: 30%;">#Application number - {{test.id}}</h6>
+            <p class="card-text" style="flex-basis: 40%;">
+                Date    : {{ test.test_date }}<br>
+                Time    : {{ test.test_time }} <br>
+                Status  : {{test.status}}
+            </p>
+            <!-- <a href="#" class="bi bi-pencil-square mx-1"></a><a href="#" class="link-primary">Edit Info</a><br> -->
+            <!-- <a href="/report_PDF" class="bi bi-download mx-1"></a><a href="#" class="link-primary">Download Application
+                Details</a> -->
+        </div>
+    </div>
+    {% endfor %}
+    <div class="card mx-4" style="width: 18rem; height: 11rem; display: flex; flex-direction: column;">
+        <a href="/test_booking">
+            <div class="card-body"><br><br>
+                <h5 class="card-title">
+                    <center>Add New Test</center>
+                </h5>
+                <p class="card-text">
+                    <center>
+                        <h1>+</h1>
+                    </center>
+                </p>
+            </div><br>
+        </a>
+    </div><br>
+    {% else %}
+    <div class="card" style="width: 18rem;">
+        <a href="/test_booking">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <center>Add New Test</center>
+                </h5>
+                <p class="card-text">
+                    <center>
+                        <h1>+</h1>
+                    </center>
+                </p>
+            </div>
+        </a>
+    </div><br>
+    {% endif %}
+    {% endif %}
+</div>
+<hr>
+
+{% endblock %}

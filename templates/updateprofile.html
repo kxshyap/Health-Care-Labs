@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-heading">
+        <h2>Edit User Information</h2>
+        <div class="line"></div>
+    </div>
+    <!-- Update Form -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" name="fname" value="{{cuser.fname}}" class="form-control" id="validationCustom01"
+                    required><br>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" name="lname" value="{{cuser.lname}}" class="form-control" id="validationCustom02"
+                    required><br>
+            </div>
+
+            <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">User name</label>
+                <input type="text" name="uname" value="{{cuser.uname}}" class="form-control" id="validationCustom01"
+                    required>
+            </div><br>
+            <div class="col-md-6">
+                <label for="validationCustomUsername" class="form-label">Email Address</label>
+                <div class="input-group has-validation">
+                    <input type="email" name="email" value="{{cuser.email}}" class="form-control"
+                        id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                </div><br>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">City</label>
+                <input type="text" name="city" value="{{cuser.city}}" class="form-control" id="validationCustom03"
+                    required><br>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom05" class="form-label">Zip</label>
+                <input type="text" name="zip" value="{{cuser.zip}}" class="form-control" id="validationCustom05"
+                    required><br>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom05" class="form-label">Mobile no.</label>
+                <input type="text" name="mobile" value="{{cuser.mobile}}" class="form-control" id="validationCustom05"
+                    required><br>
+            </div>
+            <div class="col-md-6">
+                <label for="exampleInputPassword1" class="form-label" hidden>Password</label>
+                <input type="password" name="password" value="{{cuser.password}}" class="form-control" id="exampleInputPassword1" hidden>
+            </div>
+            <div class="col-12">
+                <center><button class="btn btn-success" type="submit">Update</button></center>
+            </div>
+            <br><br><br>
+        </div>
+    </form>
+</div>
+<hr>
+{% endblock %}
